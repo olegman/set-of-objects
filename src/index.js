@@ -53,7 +53,7 @@ class Set {
                         code: 1,
                         message: 'Item is already added'
                     },
-                    result: null
+                    result: this.__make([...this.items])
                 }
             } else {
                 this.items.push(item);
@@ -65,7 +65,7 @@ class Set {
         } else {
             return {
                 error: validateError,
-                result: null
+                result: this.__make([...this.items])
             }
         }
     }
@@ -90,7 +90,7 @@ class Set {
                     code: 2,
                     message: 'Not found to remove'
                 },
-                result: null
+                result: this.__make([...this.items])
             }
         } else {
             return {
