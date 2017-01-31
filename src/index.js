@@ -45,8 +45,9 @@ class Set {
             error
         }
     }
-    add(item) {
+    add(item,  options = {}) {
         let {result: validateResult, error: validateError} = Set.isValid(item);
+        if (options.reverse) this.reverse = options.reverse;
         if (validateResult) {
             if (this.isAdded(item)) {
                 return {
