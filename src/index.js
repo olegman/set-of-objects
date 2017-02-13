@@ -10,6 +10,7 @@ class Set {
     constructor(items = [], options = {}) {
         this.items = items;
         if (options.make) this.__make = options.make;
+        if (options.reverse) this.reverse = options.reverse;
     }
     *[Symbol.iterator]() {
         let index = 0;
@@ -44,8 +45,12 @@ class Set {
             error
         }
     }
-    add(item) {
+    add(item,  options = {}) {
         let {result: validateResult, error: validateError} = Set.isValid(item);
+        let reverse = this.reverse;
+        if (options.reverse) {
+            reverse = options.reverse;
+        }
         if (validateResult) {
             if (this.isAdded(item)) {
                 return {
@@ -56,7 +61,7 @@ class Set {
                     result: this.__make([...this.items])
                 }
             } else {
-                this.items.push(item);
+                reverse ? this.items.unshift(item) : this.items.push(item);
                 return {
                     error: null,
                     result: this.__make([...this.items])
