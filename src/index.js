@@ -47,7 +47,10 @@ class Set {
     }
     add(item,  options = {}) {
         let {result: validateResult, error: validateError} = Set.isValid(item);
-        if (options.reverse) this.reverse = options.reverse;
+        let reverse = this.reverse;
+        if (options.reverse) {
+            reverse = options.reverse;
+        }
         if (validateResult) {
             if (this.isAdded(item)) {
                 return {
@@ -58,7 +61,7 @@ class Set {
                     result: this.__make([...this.items])
                 }
             } else {
-                this.reverse ? this.items.unshift(item) : this.items.push(item);
+                reverse ? this.items.unshift(item) : this.items.push(item);
                 return {
                     error: null,
                     result: this.__make([...this.items])
