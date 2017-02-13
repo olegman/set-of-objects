@@ -6,7 +6,7 @@ export function* enumerate(iterable) {
     }
 }
 
-class Set {
+class SetOfObjects {
     constructor(items = [], options = {}) {
         this.items = items;
         if (options.make) this.__make = options.make;
@@ -46,7 +46,7 @@ class Set {
         }
     }
     add(item,  options = {}) {
-        let {result: validateResult, error: validateError} = Set.isValid(item);
+        let {result: validateResult, error: validateError} = SetOfObjects.isValid(item);
         let reverse = this.reverse;
         if (options.reverse) {
             reverse = options.reverse;
@@ -101,7 +101,7 @@ class Set {
             return {
                 error: null,
                 result: this.__make([...this.items])
-        }
+            }
         }
     }
     removeById(id) {
@@ -123,9 +123,9 @@ class Set {
 }
 
 function makeSet(items = []) {
-    return new Set(items);
+    return new SetOfObjects(items);
 }
 
-Set.prototype.__make = makeSet;
+SetOfObjects.prototype.__make = makeSet;
 
-export default Set;
+export default SetOfObjects;
