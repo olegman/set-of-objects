@@ -1,3 +1,5 @@
+import errors from '../errors.json';
+
 export function* enumerate(iterable) {
     let i = 0;
     for (const x of iterable) {
@@ -25,19 +27,13 @@ class SetOfObjects {
         if (item.id === undefined) {
             return {
                 result,
-                error: {
-                    code: 3,
-                    message: 'Item don\'t have required attribute id'
-                }
+                error: errors['3']
             }
         }
         if (!(typeof item.id === 'number' || typeof item.id === 'string')) {
             return {
                 result,
-                error: {
-                    code: 4,
-                    message: 'Item don\'t have proper type for attribute id, must be number or string'
-                }
+                error: errors['4']
             }
         }
         return {
@@ -54,10 +50,7 @@ class SetOfObjects {
         if (validateResult) {
             if (this.isAdded(item)) {
                 return {
-                    error: {
-                        code: 1,
-                        message: 'Item is already added'
-                    },
+                    error: errors['1'],
                     result: this.__make([...this.items])
                 }
             } else {
@@ -91,10 +84,7 @@ class SetOfObjects {
         }
         if (!isRemoved) {
             return {
-                error: {
-                    code: 2,
-                    message: 'Not found to remove'
-                },
+                error: errors['2'],
                 result: this.__make([...this.items])
             }
         } else {
