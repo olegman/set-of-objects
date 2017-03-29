@@ -1,5 +1,4 @@
-import SetOfObjects from './src/index.js';
-import errors from './errors.json';
+import SetOfObjects, { errors } from './src/index.js';
 
 const arr = () => {
   return [{ id: 1 }, { id: 2 }, { id: 3 }];

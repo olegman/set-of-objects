@@ -1,4 +1,21 @@
-import errors from '../errors.json';
+export const errors = {
+    "1": {
+        "code": 1,
+            "message": "Item is already added"
+    },
+    "2": {
+        "code": 2,
+            "message": "Not found to remove"
+    },
+    "3": {
+        "code": 3,
+            "message": "Item don't have required attribute id"
+    },
+    "4": {
+        "code": 4,
+            "message": "Item don't have proper type for attribute id, must be number or string"
+    }
+};
 
 export function* enumerate(iterable) {
     let i = 0;
