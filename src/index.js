@@ -10,7 +10,7 @@ export function* enumerate(iterable) {
 
 class SetOfObjects {
     constructor(items = [], options = {}) {
-        this.items = items;
+        this.items = [...items];
         if (options.make) this.__make = options.make;
         if (options.reverse) this.reverse = options.reverse;
     }
